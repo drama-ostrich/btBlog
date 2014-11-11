@@ -1,7 +1,7 @@
 *~
 idea/
 .idea/
-settings.py
+settings_local.py
 *.sql
 *.sqlite
 *.sqlite3
