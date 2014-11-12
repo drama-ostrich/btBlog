@@ -8,27 +8,21 @@ from btblog import views
 urlpatterns = patterns("",
     # /
     url(
-        regex= r"^$",
-	    view = views.EntryList.as_view(),
-        name = 'entry_list'
+        regex=r"^$",
+        view=views.EntryList.as_view(),
+        name='entry_list'
     ),
+
     # /entry/{id}
     url(
-        regex= r'^entry/(?P<pk>\d+)/$',
-	    view = views.EntryDetail.as_view(),
-        name = 'entry_detail'
+        regex=r'^entry/(?P<pk>\d+)/$',
+        view=views.EntryDetail.as_view(),
+        name='entry_detail'
     ),
-    # /about
-    #url(
-    #    regex= r'^about/$',
-    #    view = views.AboutPage.as_view(),
-    #    name = 'about_page'
-    #),
+
+    url(r'^about/', TemplateView.as_view(template_name="btblog/about.html"), name='page_about'),
     
-    
-    url(r'^about/', TemplateView.as_view(template_name="btblog/about.html")),
-    
-    url(r'^music/', TemplateView.as_view(template_name="btblog/music.html")),
+    url(r'^music/', TemplateView.as_view(template_name="btblog/music.html"), name='page_music'),
 
 )
 
