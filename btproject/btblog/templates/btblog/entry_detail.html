@@ -1,0 +1,18 @@
+{% extends "btblog/base.html" %}
+{% load staticfiles %}
+{% block buttons %}
+    <div class="head-button"><a href="/">Home</a></div>
+{% endblock %}
+
+{% block content %}
+<div id="logo-big">
+    <img id="icecream-logo" src="{% static "static/img/icecream2NoShadow.png" %}" alt="bitchtits logo" />
+</div>
+
+<div id="entry-detail">
+    <h1>{{object.title}}</h1>
+    <h2>{{object.subtitle}}</h2>
+    <p>{{object.text}}</p>
+</div>
+        
+{% endblock %}

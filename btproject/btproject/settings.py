@@ -1,29 +1,12 @@
-"""
-Django settings for btproject project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
-
 from settings_local import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -32,6 +15,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'btblog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -45,10 +29,10 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'btproject.urls'
-
+WSGI_APPLICATION = 'btproject.wsgi.application'
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True

@@ -1,0 +1,87 @@
+{% extends "btblog/base.html" %}
+
+{% block content %}
+
+<div id="entry-detail">
+    <h1>We made an EP!</h1>
+    <h2>and you can get it for free.</h2>
+    <div id="player">
+	    		{% include "btblog/partials/jplayer_playlist.html" %}
+    	</div>
+    <p>
+        One day, in Carbondale Illinois, we set up in a living room with some cheap
+        microphones and two old reel-to-reel tape recorders. We pushed record and played until
+        the tapes were full. We picked these 4 songs to call our EP.
+    </p>
+    <h1>My Body</h1>
+    <p>
+        This is some text about this song
+    </p>
+    <h1>Censorshit</h1>
+    <p>
+        This is some text about this song
+    </p>
+    <h1>Fuck Perfection</h1>
+    <p>
+        This is some text about this song
+    </p>
+    <h1>How I Spent My Summer Vacation</h1>
+    <p>
+        This is some text about this song
+    </p>
+</div>
+
+
+        
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/js/jplayer/jquery.jplayer.min.js" type="text/javascript" ></script>
+<script src="/static/js/jplayer/add-on/jplayer.playlist.min.js" type="text/javascript" ></script>
+<script>
+$(document).ready(function(){
+    $("#jquery_jplayer_1").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "/static/mp3/MyBodymp3.mp3",
+        });
+      },
+      swfPath: "/static/js/jplayer",
+      supplied: "mp3"
+    });
+    
+    new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1"
+	}, [
+		{
+			title:"My Body",
+			mp3: "/static/mp3/MyBodymp3.mp3",
+		},
+		{
+			title:"Censorshit",
+			mp3: "/static/mp3/Censorshitmp3.mp3",
+		},
+		{
+			title:"Fuck Perfection",
+			mp3: "/static/mp3/FuckPerfectionmp3.mp3",
+		},
+		{
+			title:"How I Spent My Summer Vacation",
+			mp3: "/static/mp3/SummerVacationmp3.mp3",
+		},
+	], {
+		swfPath: "/static/js/jplayer",
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: false
+	});
+
+
+    
+});
+</script>
+
+{% endblock %}
