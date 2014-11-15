@@ -9,6 +9,7 @@ from btblog.models import Entry
 class EntryList(ListView):
     model = Entry
     template_name = "btblog/entry_list.html"
+    paginate_by = 10
     
     # Can we sort with querysets instead?
     # then we could override get_queryset and avoid hijacking def get

@@ -2,12 +2,13 @@ from django.db import models
 
 ENTRY_CHOICES = (
     ('IM', 'Image'),
-    ('SI', 'Small Img'),
+    # ('SI', 'Small Img'),
     ('TX', 'Text'),
-    ('ST', 'Status'),
-    ('AU', 'Audio'),
-    ('VI', 'Video'),
-    ('EV', 'Event'),
+    # ('ST', 'Status'),
+    # ('AU', 'Audio'),
+    # ('VI', 'Video'),
+    # ('EV', 'Event'),
+    ('CD', 'Code')
 )
 
 class Entry(models.Model):
@@ -18,13 +19,14 @@ class Entry(models.Model):
     subtitle = models.CharField(max_length=255, blank=True)
     
     text = models.TextField(blank=True)
-    width = models.IntegerField(blank = True, null = True)
-    height = models.IntegerField(blank = True, null = True)
-    audio = models.FileField(blank = True, null = True, upload_to='upload')
-    video = models.FileField(blank = True, null = True, upload_to='upload')
-    image = models.ImageField(blank = True, null = True, upload_to='upload')
+    width = models.IntegerField(blank=True, null=True)
+    height = models.IntegerField(blank=True, null=True)
+    grid_columns = models.IntegerField(blank=True, null=True, default=6)
+    audio = models.FileField(blank=True, null=True, upload_to='upload')
+    video = models.FileField(blank=True, null=True, upload_to='upload')
+    image = models.ImageField(blank=True, null=True, upload_to='upload')
     
-    order_manual = models.IntegerField(blank = True, null = True)
+    order_manual = models.IntegerField(blank=True, null=True)
 
     def __unicode__(self):
 	    return self.title + ' - ' + self.type

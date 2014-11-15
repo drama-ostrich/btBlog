@@ -22,31 +22,35 @@
 </head>
 
 <body>
-	<header>
-	    
-	    <div id="head-menu">
-	        <div class="head-button"><a href="/">Home</a></div>
-	        <div class="head-button"><a href="/about">About</a></div>
-	    	{% block buttons %}{% endblock %}
-	    	
-	    </div>
-		<div id="head-right">
-			<div id="social-shit">
-				<a class="social-icon-link" href="https://www.facebook.com/B.tchtits" ><img  src="{% static "img/darksocial/sm/facebook_active.png" %}" alt="facebook page" /></a>
-			</div>
-		</div>
-
-	</header>
 
 
-<div id="content-container" class="container">
-    {% block content %}{% endblock %}
+
+<div id="content-container" class="container-fluid">
+    <header>
+        <div id="head-menu">
+            <div class="head-button"><a href="{% url 'entry_list' %}">Home</a></div>
+            <div class="head-button"><a href="{% url 'page_about' %} ">About</a></div>
+            {% block buttons %}{% endblock %}
+
+        </div>
+        <div id="head-right">
+            <div id="social-shit">
+                <a class="social-icon-link" href="https://www.facebook.com/B.tchtits" ><img  src="{% static "img/darksocial/sm/facebook_active.png" %}" alt="facebook page" /></a>
+            </div>
+        </div>
+    </header>
+
+    <div id="page">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <span class="left">Designed and developed by bitchtits 2014.</span>
+        <span class="right">contact@bitchtitsmusic.com</span>
+    </footer>
 </div>
 
-<footer> 
-	<span class="left">Designed and developed by bitchtits 2014. Powered by the django project and isotope.js</span>
-	<span class="right">contact@bitchtitsmusic.com</span>
-</footer>
+
 
 
 <script src="{% static "js/jquery-1.10.2.min.js" %}"></script>

@@ -5,10 +5,10 @@
 {% block buttons %}
 {% comment %}
     <div class="head-button head-filter"><a href="#ev">Shows</a></div>
-{% endcomment %}
     <div class="head-button head-filter"><a href="#tx">Blog</a></div>
     <div class="head-button head-filter"><a href="#im">Pics</a></div>
     <div class="head-button head-filter"><a href="#all">All</a></div>
+{% endcomment %}
 {% endblock %}
 
 {% block content %}
@@ -27,11 +27,13 @@
 </div>
 {% endcomment %}
 
-<div id="logo-big" class="grid-col">
-    <img id="icecream-logo" src="{% static "img/icecream2NoShadow.png" %}" alt="bitchtits logo" />
-</div>
+    <div class="row">
+        <div id="logo-big">
+            <img id="icecream-logo" src="{% static "img/icecream2NoShadow.png" %}" alt="bitchtits logo" />
+        </div>
+    </div>
 
-<div class="container-fluid">
+
     <div class="row">
 
         <div id="shit-on-the-left" class="col-sm-4">
@@ -47,40 +49,83 @@
 
         <div id="shit-on-the-right" class="col-sm-8">
             <div id="i-container" class="row">
-
-                
-                
                 {% for entry in object_list %}
-                <div class="i-box {{entry.type|slugify}} col-sm-6 col-lg-4 ">
-                    {% if entry.type == "IM" %}
-                            <div class="entry-image" >
-                                <h3>{{entry.title}}</h1>
-                                <img src="/media/{{entry.image}}" 
-                                {% if entry.width %}width="{{entry.width}}" {% endif %}
-                                {% if entry.height %}height="{{entry.height}}" {% endif %}
-                                alt="{{entry.title}}" />
-                            </div>
-                    {% elif entry.type == "SI" %}
-                            <div class="entry-image-small" >
-                                <img src="/media/{{entry.image}}" 
-                                {% if entry.width %}width="{{entry.width}}" {% endif %}
-                                {% if entry.height %}height="{{entry.height}}" {% endif %}
-                                alt="{{entry.title}}" />
-                            </div>
+                <div class="i-box {{entry.type|slugify}}
+                {% if forloop.first %}
+                col-xs-12
+                {% else %}
+                    {% if entry.grid_columns %}
+                    col-xs-12 col-md-{{ entry.grid_columns }}
                     {% else %}
-                            <div class="entry-text">
-                                <h3>{{entry.title}}</h1>
-                                <h2>{{entry.subtitle}}</h2>
-                                <p>{{entry.text|truncatewords:30}}</p>
-                                <a href="/entry/{{ entry.id }}/">READ MORE</a>
-                            </div>
+                    col-xs-12 col-md-6 col-lg-4
+                    {% endif %}
+                {% endif %}
+                ">
+                    {% if entry.type == "IM" %}
+                        <div class="entry-image" >
+                            <h3>{{entry.title}}</h3>
+                            <a href="{{ entry.image.url }}">
+                                <img src="{{entry.image.url}}"
+                                {% comment %}
+                                {% if entry.width %}width="{{entry.width}}" {% endif %}
+                                {% if entry.height %}height="{{entry.height}}" {% endif %}
+                                {% endcomment %}
+                                alt="{{entry.title}}" />
+                            </a>
+                            {% if entry.text %}
+                                <p>{{entry.text|truncatewords:20}}</p>
+                                <a href="{% url 'entry_detail' entry.id %}">READ MORE</a>
+                            {% endif %}
+                        </div>
+                    {% elif entry.type == "SI" %}
+                        <div class="entry-image-small" >
+                            <img src="/media/{{entry.image}}"
+                            {% comment %}
+                            {% if entry.width %}width="{{entry.width}}" {% endif %}
+                            {% if entry.height %}height="{{entry.height}}" {% endif %}
+                            {% endcomment %}
+                            alt="{{entry.title}}" />
+                        </div>
+                    {% elif entry.type == "CD" %}
+                        <div class="entry-code" >
+                            <h3>{{entry.title}}</h3>
+                            {% if entry.subtitle %}<h2>{{entry.subtitle}}</h2>{% endif %}
+                            <div>{{ entry.text|safe }}</div>
+                        </div>
+                    {% else %}
+                        <div class="entry-text">
+                            <h3>{{entry.title}}</h3>
+                            <h2>{{entry.subtitle}}</h2>
+                            <p>{{entry.text|truncatewords:60}}</p>
+                            <a href="{% url 'entry_detail' entry.id %}">READ MORE</a>
+                        </div>
                     {% endif %}
                 </div>
                 {% endfor %}
+                {# pagination #}
+                {% if is_paginated %}
+                    <div class="pagination col-xs-12">
+                        <span class="page-links">
+                            {% if page_obj.has_previous %}
+                                <a href="/?page={{ page_obj.previous_page_number }}">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                            {% endif %}
+                            <span class="page-current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="/?page={{ page_obj.next_page_number }}">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
-</div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -92,7 +137,7 @@ $(document).ready(function(){
     $("#jquery_jplayer_1").jPlayer({
       ready: function () {
         $(this).jPlayer("setMedia", {
-          mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}",
+          mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}"
         });
       },
       swfPath: "{% static "/static/js/jplayer" %}",
@@ -105,20 +150,20 @@ $(document).ready(function(){
 	}, [
 		{
 			title:"Fuck Your Perfection",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}",
+			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}"
 		},
 		{
 			title:"Censorshit",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 02 - Censorshit.mp3" %}",
+			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 02 - Censorshit.mp3" %}"
 		},
 		{
 			title:"How I Spent My Summer Vacation",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 03 - How I Spent My Summer Vacation.mp3" %}",
+			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 03 - How I Spent My Summer Vacation.mp3" %}"
 		},
 		{
 			title:"My Body",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 04 - My Body (My Party).mp3" %}",
-		},
+			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 04 - My Body (My Party).mp3" %}"
+		}
 	], {
 		swfPath: "{% static "/js/jplayer" %}",
 		supplied: "mp3",

@@ -28,8 +28,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'btproject.urls'
-WSGI_APPLICATION = 'btproject.wsgi.application'
+ROOT_URLCONF = 'myproject.urls'
+WSGI_APPLICATION = 'myproject.wsgi.application'
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/New_York'
