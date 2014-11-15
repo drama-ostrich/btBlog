@@ -8,19 +8,19 @@ function resizeMe(){
     var percentage = displayWidth / preferredWidth;
     
     // h1
-    var fontsize = 50
+    var fontsize = 50;
     var newFontSize = Math.floor(fontsize * percentage) - 1;
     if (newFontSize < 20){newFontSize = 20;} // Minimum size of 20
     $("h1.resize-font").css("font-size", newFontSize);
     
     // h2
-    fontsize = 25
+    fontsize = 25;
     newFontSize = Math.floor(fontsize * percentage) - 1;
     if (newFontSize < 12){newFontSize = 12;} // Minimum size of 12
     $("h2.resize-font").css("font-size", newFontSize);
     
     // distance from bottom
-    var initBottom = 200
+    var initBottom = 200;
     var newBottom = Math.floor(initBottom * percentage) - 1;
     if (newBottom < 70){newBottom = 70;}
     $("#ep-slide-text").css("bottom", newBottom);
@@ -32,37 +32,37 @@ function resizeMe(){
                                                     // jquery ready
 $(document).ready(function(){
     // init isotope
-    $container = $('#i-container');
-    $container.isotope({
-      // options
-      itemSelector: '.i-box',
-      layoutMode: 'masonry',
-      masonry: {
-        columnWidth: 60,
-        gutter: 5
-      }
-
-    });
+//    $container = $('#i-container');
+//    $container.isotope({
+//      // options
+//      itemSelector: '.i-box',
+//      layoutMode: 'masonry',
+//      masonry: {
+//        columnWidth: 60,
+//        gutter: 5
+//      }
+//
+//    });
 
     
     // Make images bigger on click
-    $(".i-box img").click(function(){
-      $(this).toggleClass("entry-image-click");
-      $container.isotope('layout');
-    });
+//    $(".i-box img").click(function(){
+//      $(this).toggleClass("entry-image-click");
+//      $container.isotope('layout');
+//    });
     
     // Isotope sort on top nav click
-    $('.head-filter a').click(function () { // handle sort button function actions and css changes
-            // get href attribute, minus the '#'
-            var filterType = $(this).attr('href').slice(1);
-            if (filterType == 'all'){
-              $container.isotope({ filter: '.i-box' });
-            }
-            else {
-              $container.isotope({ filter: '.' + filterType });
-            }
-            return false;
-    });
+//    $('.head-filter a').click(function () { // handle sort button function actions and css changes
+//            // get href attribute, minus the '#'
+//            var filterType = $(this).attr('href').slice(1);
+//            if (filterType == 'all'){
+//              $container.isotope({ filter: '.i-box' });
+//            }
+//            else {
+//              $container.isotope({ filter: '.' + filterType });
+//            }
+//            return false;
+//    });
 
     // Do resizy stuff on resize
     $(function() {
@@ -82,12 +82,12 @@ $(document).ready(function(){
 
     
 $(window).load(function(){
-    $container.isotope('layout');
+    //$container.isotope('layout');
     
     $(".img-load").each(function(){
         $imgContainer = $(this);
         url = $imgContainer.data("imgsrc");
-        $imgContainer.html('<img id="ep-img" src="' + url +'" alt="" >')
+        $imgContainer.html('<img id="ep-img" src="' + url +'" alt="" >');
         //$.get(url).done(function( data ) {
         //    $imgContainer.html(data);
         //});

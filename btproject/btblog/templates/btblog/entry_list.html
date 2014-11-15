@@ -27,16 +27,14 @@
 </div>
 {% endcomment %}
 
-
 <div id="logo-big" class="grid-col">
-    <img id="icecream-logo" src="{% static "static/img/icecream2NoShadow.png" %}" alt="bitchtits logo" />
+    <img id="icecream-logo" src="{% static "img/icecream2NoShadow.png" %}" alt="bitchtits logo" />
 </div>
 
+<div class="container-fluid">
+    <div class="row">
 
-<div class="divide-bottom">
-    <div class="grid-wrap">
-
-        <div id="shit-on-the-left" class="grid-col bp1-col-full bp2-col-one-third">
+        <div id="shit-on-the-left" class="col-sm-4">
             
             <h1>Bitchtits EP</h1>
             <p>Listen online, <a href="{% static "/static/mp3/Bitchtits - Bitchtits EP.zip"%}">download for free</a></p>
@@ -47,13 +45,13 @@
             {% include "btblog/partials/ep_lyrics.html" %}
         </div>
 
-        <div id="shit-on-the-right" class="grid-col bp1-col-full bp2-col-two-thirds">
-            <div id="i-container">
+        <div id="shit-on-the-right" class="col-sm-8">
+            <div id="i-container" class="row">
 
                 
                 
                 {% for entry in object_list %}
-                <div class="i-box {{entry.type|slugify}}">
+                <div class="i-box {{entry.type|slugify}} col-sm-6 col-lg-4 ">
                     {% if entry.type == "IM" %}
                             <div class="entry-image" >
                                 <h3>{{entry.title}}</h1>
@@ -87,8 +85,8 @@
 
 {% block scripts %}
 
-<script src="{% static "/js/jplayer/jquery.jplayer.min.js" %}" type="text/javascript" ></script>
-<script src="{% static "/js/jplayer/add-on/jplayer.playlist.min.js" %}" type="text/javascript" ></script>
+<script src="{% static "js/jplayer/jquery.jplayer.min.js" %}" type="text/javascript" ></script>
+<script src="{% static "js/jplayer/add-on/jplayer.playlist.min.js" %}" type="text/javascript" ></script>
 <script>
 $(document).ready(function(){
     $("#jquery_jplayer_1").jPlayer({
@@ -106,7 +104,7 @@ $(document).ready(function(){
 		cssSelectorAncestor: "#jp_container_1"
 	}, [
 		{
-			title:"Fuck Perfection",
+			title:"Fuck Your Perfection",
 			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}",
 		},
 		{

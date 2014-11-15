@@ -34,7 +34,7 @@ body{
     }
 h1{font-family: Blanch;font-size: 50px;letter-spacing: 2px;}
 h2{font-family: Corbert;font-size: 14px;letter-spacing: 0;}
-h3{font-family: Corbert;font-size: 20px;letter-spacing: 0;}
+h3{font-family: Corbert;font-size: 20px;letter-spacing: 0;margin-top:10px}
 h4{}
 h5{}
 p{font-family: Corbert;font-size: 11px;line-height: 20px;}
@@ -92,21 +92,24 @@ footer .right{float:right;text-align: right;}
 #i-container{margin:auto;}
 
 #logo-big{margin: 0 0 -45px 0;padding: 0;}
-#icecream-logo{max-width:800px;width:90%;}
+#icecream-logo{max-width:800px;width:60%;}
 #content-container{}
 .i-box{
     margin-bottom: 10px;
     padding:5px;
+}
+.i-box > div {
     background-image:url('/static/img/transpBlack10.png');
-    overflow: hidden;
+    margin:5px;
+    padding:5px;
 }
 .entry-image{}
 .entry-image img{}
-.entry-image h1{width:150px;}
+.entry-image h1{}
 .entry-image-small{}
 .entry-image-small img{}
-.entry-text{width:300px;}
-.entry-image-click{width:auto;height:auto;max-width: 500px}
+.entry-text{}
+.entry-image-click{width:auto;height:auto;}
 .entry-lyrics{}
 .entry-lyrics p {margin:15px 0px;}
 .entry-lyrics h2 {
@@ -154,6 +157,7 @@ margin: 0px 0 0px 0;
 }
 #player div.jp-audio{border:0px;}
 */
+.jp-progress{}
 /* End jPlayer */
 
 /* Entry Detail */
