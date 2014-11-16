@@ -15,7 +15,9 @@
         <div id="entry-detail">
             <h1>{{object.title}}</h1>
             <h2>{{object.subtitle}}</h2>
+            {% if object.image %}
             <img src="{{ object.image.url }}">
+            {% endif %}
             <p>{{object.text}}</p>
         </div>
     </div>

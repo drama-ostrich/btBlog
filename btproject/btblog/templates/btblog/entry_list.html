@@ -17,7 +17,7 @@
     
         <a id="ep-link" href="/music/">
             
-            <span class="img-load" data-imgsrc="/static/img/synthslidecrop.png"></span>
+            <span class="img-load" data-imgsrc="/img/synthslidecrop.png"></span>
             <span id="ep-slide-text">
             <h1 class="resize-font">bitchtits ep</h1><br>
             <h2 class="resize-font">listen online<br>download for free</h2>
@@ -39,7 +39,7 @@
         <div id="shit-on-the-left" class="col-sm-4">
             
             <h1>Bitchtits EP</h1>
-            <p>Listen online, <a href="{% static "/static/mp3/Bitchtits - Bitchtits EP.zip"%}">download for free</a></p>
+            <p>Listen online, <a href="{% static "mp3/Bitchtits - Bitchtits EP.zip"%}">download for free</a></p>
             <div id="player">
 	            		{% include "btblog/partials/jplayer_playlist.html" %}
 	        </div>
@@ -137,10 +137,10 @@ $(document).ready(function(){
     $("#jquery_jplayer_1").jPlayer({
       ready: function () {
         $(this).jPlayer("setMedia", {
-          mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}"
+          mp3: "{% static "mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}"
         });
       },
-      swfPath: "{% static "/static/js/jplayer" %}",
+      swfPath: "{% static "js/jplayer" %}",
       supplied: "mp3"
     });
     
@@ -150,22 +150,22 @@ $(document).ready(function(){
 	}, [
 		{
 			title:"Fuck Your Perfection",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}"
+			mp3: "{% static "mp3/Bitchtits - Bitchtits EP - 01 - Fuck Perfection.mp3" %}"
 		},
 		{
 			title:"Censorshit",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 02 - Censorshit.mp3" %}"
+			mp3: "{% static "mp3/Bitchtits - Bitchtits EP - 02 - Censorshit.mp3" %}"
 		},
 		{
 			title:"How I Spent My Summer Vacation",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 03 - How I Spent My Summer Vacation.mp3" %}"
+			mp3: "{% static "mp3/Bitchtits - Bitchtits EP - 03 - How I Spent My Summer Vacation.mp3" %}"
 		},
 		{
 			title:"My Body",
-			mp3: "{% static "/static/mp3/Bitchtits - Bitchtits EP - 04 - My Body (My Party).mp3" %}"
+			mp3: "{% static "mp3/Bitchtits - Bitchtits EP - 04 - My Body (My Party).mp3" %}"
 		}
 	], {
-		swfPath: "{% static "/js/jplayer" %}",
+		swfPath: "{% static "js/jplayer" %}",
 		supplied: "mp3",
 		wmode: "window",
 		smoothPlayBar: true,
